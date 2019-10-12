@@ -104,11 +104,24 @@ echo "123" | passwd --stdin user02
 - 回收权限 —— `chmod u-x file.sh`
 - 使用数字 —— `chmod 777 file.sh`
 
+注意下面的例子：
+
+tom是否能写入tom.txt？
+
+```shell
+chmod 464 /tmp/tom.txt
+chmod tom.tom /tmp/tom.txt
+```
+
+判断规则，先判断所有者，因为tom是所有者，所以
+
 #### chown
 
 改变文件所属的组 `chown bacra.bacra file1.txt`
 
 ### setfacl
+
+应用场景 —— 文件chmod的x权限被去掉的时候，可以用setfacl去赋予写权限
 
 针对特定的用户，赋予权限
 
@@ -135,6 +148,26 @@ setfacl -m u:bacra:rw /home/test.txt
 ```shell
 setfacl -x u:bacra /home/test.txt
 ```
+
+### umask
+
+一般不要去动这个东西
+
+```
+umask 
+```
+
+输出 —— 0002
+
+这代表文件创建的时候，会默认给权限664，也就是(rw-rw-r--)，目录创建的时候，会默认给775。
+
+这个的计算原理是这样的，文件一般默认是给(666)，设置了unmask以后，就是(rw-rw-r--)去掉002(-------w-)，那就是(rw-rw-r--)。目录默认是给(777)，同理(rwxrwxrwx)去掉(-------w-)，那就是(rw-rw-r-x)
+
+### su
+
+切用户 `su - bacra`
+
+如果不加 `-` ，一些属性不会跟着切过去
 
 ### sudo
 
