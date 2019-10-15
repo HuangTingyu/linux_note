@@ -50,6 +50,16 @@ cat files.txt |xargs -I {} cp {} /tmp
 
 `cp {} /tmp` ，这里使用的 `{}` ，就是前面通过 `-I` 暂存的东西
 
+### 统计登录shell的种类
+
+```
+ awk -F: '{print $7}' /etc/passwd |sort |uniq -c
+```
+
+取出第七列(shell) | 排序(相同的归类) | 去重
+
+`-c` 显示每一类的item各有多少个
+
 ## rz
 
 下载 `lrzsz`，然后可以使用 `rz` 命令，上传压缩包。
