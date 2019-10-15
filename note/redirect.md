@@ -20,6 +20,36 @@
 
 将标准输出与错误共同写入文件中(追加)
 
+### 管道
+
+对于不必要跟参数的命令(如rm -rf，cp等)，可以通过 `xargs` 传递参数
+
+1. `files.txt` 里面的内容如下所示，请问如何通过管道，把这些文件都删除？
+
+```
+/home/file1 
+/home/file2
+/home/file3 
+/home/file4
+/home/file
+```
+
+关键，使用参数 `xargs` 
+
+```shell
+cat files.txt |xargs rm -rvf
+```
+
+2. `files.txt` 同第一题，请问如何通过管道，把这些文件都复制到tmp目录下？
+
+```shell
+cat files.txt |xargs -I {} cp {} /tmp
+```
+
+`-I` 是暂存的意思，把cat的输出暂存到 `{}` 里面，
+
+`cp {} /tmp` ，这里使用的 `{}` ，就是前面通过 `-I` 暂存的东西
+
 ## rz
 
 下载 `lrzsz`，然后可以使用 `rz` 命令，上传压缩包。

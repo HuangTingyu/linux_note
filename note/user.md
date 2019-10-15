@@ -189,7 +189,15 @@ root ALL=(ALL) ALL
 
 2.当目录给了w权限以后，普通用户也可以强制修改目录下的文件
 
+### suid
 
+一般情况下，普通用户不可以查看 `/etc/shadow` ，要使普通用户能查看，像这样
+
+```
+chmod u+s /usr/bin/cat
+```
+
+以后普通用户执行cat，就是以root的身份执行，这样就能访问 `/etc/shadow` 文件了。
 
 
 
