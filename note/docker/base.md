@@ -68,5 +68,71 @@ SUM和X86互不兼容
 
 docker，容器技术的一种实现。
 
+### docker安装
 
+#### 安装virtualBox 和vagrant
+
+0.安装virtual box
+
+注意版本兼容，目前vagrant尚不支持virtualBox6.1版本！
+
+1.安装vagrant, 然后打开git bash,创建各种目录
+
+```
+mkdir Vagrant
+cd Vagrant
+mkdir centos7
+cd centos7
+```
+
+2.安装centos/7, 安装过程大概2h, 耐心等待......
+
+```
+vagrant init centos/7
+vagrant up
+```
+
+3.安装完毕之后，打开virtualbox，发现虚拟机已经在运行。
+
+#### 安装docker
+
+1.启动vagrant
+
+```
+vagrant up
+```
+
+连接虚拟机
+
+```
+vagrant ssh
+```
+
+2.清除原有的docker，然后安装docker相关的依赖，详细过程请见官方文档 <https://docs.docker.com/install/linux/docker-ce/centos/>
+
+option的安装可以跳过！
+
+3.进入INSTALL DOCKER ENGINE - COMMUNITY的部分
+
+```
+sudo yum install docker-ce docker-ce-cli containerd.io
+```
+
+4.启动docker
+
+```
+sudo systemctl start docker
+```
+
+5.验证docker是否启动
+
+```
+sudo docker version
+```
+
+或者
+
+```
+sudo docker run hello-world
+```
 
