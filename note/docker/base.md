@@ -85,7 +85,7 @@ mkdir centos7
 cd centos7
 ```
 
-2.安装centos/7, 安装过程大概2h, 耐心等待......
+2.安装centos/7
 
 ```
 vagrant init centos/7
