@@ -12,6 +12,21 @@
 
 xshell 参考链接 —— <https://blog.csdn.net/lxmsc612109/article/details/85265635>
 
+### 日常开机
+
+xshell
+
+```
+cd C:\Users\hty\Vagrant\centos7
+vagrant up
+```
+
+然后创建连接，秘钥保存在
+
+```
+C:\Users\hty\Vagrant\centos7\.vagrant\machines\default\virtualbox
+```
+
 ### 切换root用户
 
 ```
@@ -175,4 +190,96 @@ TMOUT —— 用户和系统交互过程的超时值
 IFS —— 系统输入分隔符
 
 OFS —— 系统输出分隔符
+
+### 管道
+
+#### 需求1
+
+列出系统所有的软件包，搜索python相关的软件包
+
+#### 解决1.重定向 
+
+1.查找所有软件包，重定向到一个文件
+
+```
+rpm -qa > all_soft.txt
+```
+
+2.查文件信息，以及文件行数
+
+```
+ll all_soft.txt
+wc all_soft.txt
+```
+
+3.查找文件中，python相关的
+
+```
+vim all_soft.txt
+```
+
+#### 解决2.管道
+
+前一行命令的输出，作为输入交给下一个命令
+
+```
+rpm -qa | grep python | wc -l
+```
+
+### 退出状态码
+
+1.shell命令使用退出码告知shell，它已经执行完毕
+
+2.退出码是一个0-255的整数
+
+3.Linux提供了一个 `$?` 捕获退出状态码
+
+总结 ——
+
+0 命令运行成功
+
+其他状态码 命令运行不成功
+
+#### 使用场景1
+
+判断命令是否执行成功
+
+```js
+date
+
+if [ $? -eq 0 ];then
+   echo "success..."
+else
+   echo "failed by status code $?"
+fi
+
+```
+
+中括号里的东西，是判断语句，如果状态码等于0，就输出
+
+```
+sucess...
+```
+
+#### 使用场景2
+
+判断进程是否存在
+
+```
+ps -ef | grep nginx | grep -v grep
+```
+
+或者
+
+```
+ps -ef | grep sshd | grep -v grep
+```
+
+再输入
+
+```
+echo $?
+```
+
+如果输出1，代表进程不存在，输出0，代表进程存在
 
