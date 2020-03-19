@@ -10,6 +10,8 @@
 
 用户名 `vagrant` ，密码选择 —— `Vagrant\centos7\.vagrant\machines\default\virtualbox\private_key` 
 
+或者，设置一下root用户，稍微配置一下，用root用户登录，配置参考下文。
+
 xshell 参考链接 —— <https://blog.csdn.net/lxmsc612109/article/details/85265635>
 
 ### 日常开机

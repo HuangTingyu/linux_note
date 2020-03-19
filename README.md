@@ -18,6 +18,8 @@
 
 详见 `base/shell`
 
+或者`shell`
+
 ### Docker
 
 详见 `docker`
