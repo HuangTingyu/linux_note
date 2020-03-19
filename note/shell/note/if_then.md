@@ -155,13 +155,11 @@ fi
 str1="string"
 str2="compare"
 
-if [ $str1 \< $str2 ];then
+if [ "$str1" \< "$str2" ];then
    echo "$str1<$str2"
 else
    echo "$str1>$str2"
 fi
-
-
 ```
 
 输出
@@ -243,5 +241,33 @@ if [ -s /root/ch3_6_2.sh ];then
 else
    echo "no"
 fi
+```
+
+### 与或非
+
+```
+if condition1 && condition2
+```
+
+```
+if condition1 || condition2
+```
+
+#### 例9 与或非
+
+```
+# ! /bin/bash
+#
+
+num1=520
+num2=1314
+num3=3344
+
+if [ $num1 -lt $num2 ] && [ $num2 -lt $num3 ];then
+   echo "Dear-dlrb"
+else
+   echo "sorry"
+fi
+
 ```
 
