@@ -23,6 +23,8 @@ cd C:\Users\hty\Vagrant\centos7
 vagrant up
 ```
 
+然后，单机左上角文件 - 打开 - 选择vagrant，成功登陆。
+
 然后创建连接，秘钥保存在
 
 ```
